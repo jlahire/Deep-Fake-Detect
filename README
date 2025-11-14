@@ -13,7 +13,10 @@
 - **Clone** the repo
 - run **pip install realitydefender**
 - **get** API key from Reality Defender
-- run **export REALITY_DEFNEDER_API_KEY='insert-key-here'**
+- create a **.env** file and add your api key in the following format
+```text
+REALITY_DEFENDER_API_KEY=api-key
+```
 - **use** the tool...
 
 ```bash
