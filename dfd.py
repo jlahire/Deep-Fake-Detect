@@ -93,14 +93,28 @@ class Applicaiton:
     def getAPI(self): # grab api from .env
         load_dotenv()
         apiKey = os.getenv("REALITY_DEFENDER_API_KEY")
+        if not apiKey:
+            print("no api key found in .env...")
+            return None
         return apiKey
 
     def getFile(self):
-        pass # read cli input
+        if len(sys.argv) < 2:
+            print("usage: python dfd.py <file_path>")
+            return None
+        return sys.argv[1]
 
     async def run(self):
-        pass # obvious....... -_-
+        self.apiKey = self.getAPI()
+        if not self.apiKey:
+            return
+        
+        filePath = self.getFile()
+        if not filePath:
+            return
 
+        self.detector = DeepfakeDetector(self.apiKey)
+        await self.detector.analyze(filePath)
 
 def main():
     app = Applicaiton()
