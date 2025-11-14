@@ -11,7 +11,7 @@
 ## Setup
 
 - **Clone** the repo
-- run **pip install realitydefender**
+- run **pip install requirements.txt**
 - **get** API key from Reality Defender
 - create a **.env** file and add your api key in the following format
 ```text
