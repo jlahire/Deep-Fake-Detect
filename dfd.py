@@ -4,18 +4,34 @@ import os
 import sys
 import asyncio 
 from realitydefender import RealityDefender
-
+from dotenv import load_dotenv
+from pathlib import Path
 
 
 class DeepfakeDetector:
     
+    audio = ['.mp3', '.wav', '.m4a', '.flac', '.alac']
+    image = ['.jpg', '.jpeg', '.png', '.gif', '.webp']
+
 
     def __init__(self, apiKey):
         self.apiKey = apiKey
         self.client = None
 
     def checkFile(self, filePath):
-        pass # validate file
+        if not os.path.exists(filePath):
+            print(f"file {filePath} not found...")
+            return False
+        
+        fileExt = Path(filePath).suffix.lower()
+        supported = self.audio + self.image
+
+        if fileExt not in supported:
+            print(f"file ext {fileExt} not supported...")
+            print(f"supported ext are: {', '.join(supported)}")
+            return False
+        return True
+
 
     async def analyze(self, filePath):
         pass # async api call
@@ -33,8 +49,10 @@ class Applicaiton:
         self.apiKey = None
         self.detector = None
 
-    def getAPI(self):
-        pass # grab api
+    def getAPI(self): # grab api from .env
+        load_dotenv()
+        apiKey = os.getenv("REALITY_DEFENDER_API_KEY")
+        return apiKey
 
     def getFile(self):
         pass # read cli input
