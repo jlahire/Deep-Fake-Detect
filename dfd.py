@@ -34,13 +34,54 @@ class DeepfakeDetector:
 
 
     async def analyze(self, filePath):
-        pass # async api call
+        if not self.checkFile(filePath):
+            return
+        
+        print("starting...")
+        self.client = RealityDefender(api_key=self.apiKey)
 
-    def results(self, result):
-        pass # display results
+        try:
+            uploadResponse = await self.client.uplaod(file_path=filePath)
+            requestId = uploadResponse["request_id"]
+            result = await self.client.get_result(requestId)
+            self.results(result, filePath, requestId)
+
+        except Exception as error:
+            print(f"error: {error}")
+
+    def results(self, result, filePath, requestId):
+        
+        print("\n" + "="*10)
+
+        fileName = Path(filePath).name
+        status = result.get("status", "unknown")
+        score = result.get("score", "n/a")
+
+        print(f"File: {fileName}")
+        print(f"Status: {status}")
+        print(f"Score: {score}")
+        print(f"Request ID: {requestId}")
+
+        if 'models' in result:
+            for modelName, modelData in result["models"].items():
+                modelScore = modelData.get("score", "n/a")
+                modelPrediction = modelData.get("prediction", "n/a")
+                print(f"{modelName}: score={modelScore}, prediction={modelPrediction}")
+        
+        print("="*10)
+        self.score(score)
+        
 
     def score(self, score):
-        pass # translate score
+        if isinstance(score, str):
+            print("str return instead of int/float...")
+            return
+        if score < 0.3:
+            print("result: LIKELY AUTHENTIC")
+        elif 0.3 <= score < 0.7:
+            print("result: UNCERTAIN")
+        else:
+            print("result: LIKELY DEEPFAKE")
 
     
 class Applicaiton:
