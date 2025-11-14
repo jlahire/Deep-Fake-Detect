@@ -90,7 +90,7 @@ class Applicaiton:
         self.apiKey = None
         self.detector = None
 
-    def getAPI(self): # grab api from .env
+    def getAPI(self):
         load_dotenv()
         apiKey = os.getenv("REALITY_DEFENDER_API_KEY")
         if not apiKey:
