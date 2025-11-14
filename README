@@ -1,0 +1,31 @@
+# Deepfake Detector (free)
+
+*Simple deepfake detection tool using **Reality Defender API**. Works only for audio and image files.*
+
+## Limitations
+
+ - 50 uploads p/mo
+ - Audio: .mp3 .wav .m4a .aac .ogg .flac .alac
+ - Image: .jpg .jpeg .png .gif .webp
+
+## Setup
+
+- **Clone** the repo
+- run **pip install realitydefender**
+- **get** API key from Reality Defender
+- run **export REALITY_DEFNEDER_API_KEY='insert-key-here'**
+- **use** the tool...
+
+```bash
+python dfd.py <file>
+```
+
+## Output
+
+TBA
+
+## Links
+
+- https://www.realitydefender.com/
+- https://docs.realitydefender.com/introduction
+
