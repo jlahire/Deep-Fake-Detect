@@ -10,30 +10,42 @@ from realitydefender import RealityDefender
 class DeepfakeDetector:
     
 
-    def __init__():
-    
-    def checkFile():
+    def __init__(self, apiKey):
+        self.apiKey = apiKey
+        self.client = None
 
-    def analyze():
+    def checkFile(self, filePath):
+        pass # validate file
 
-    def results():
+    async def analyze(self, filePath):
+        pass # async api call
 
-    def score():
+    def results(self, result):
+        pass # display results
+
+    def score(self, score):
+        pass # translate score
 
     
 class Applicaiton:
 
-    def __init__():
+    def __init__(self):
+        self.apiKey = None
+        self.detector = None
 
-    def getAPI():
+    def getAPI(self):
+        pass # grab api
 
-    def getFile():
+    def getFile(self):
+        pass # read cli input
 
-    def run():
+    async def run(self):
+        pass # obvious....... -_-
 
 
 def main():
-
+    app = Applicaiton()
+    asyncio.run(app.run())
 
 if __name__ == "__main__":
     main()
