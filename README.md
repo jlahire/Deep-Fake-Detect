@@ -27,16 +27,16 @@ python dfd.py <file>
 
 **The tool shows:**
 
-File name
-Analysis status
-Score (0.0 to 1.0)
-Result interpretation
+- File name
+- Analysis status
+- Score (0.0 to 1.0)
+- Result interpretation
 
 **Score Guide:**
 
-Below 0.3 = Likely authentic
-0.3 to 0.7 = Uncertain
-Above 0.7 = Likely deepfake
+- Below 0.3 = Likely authentic
+- 0.3 to 0.7 = Uncertain
+- Above 0.7 = Likely deepfake
 
 **example output**
 
