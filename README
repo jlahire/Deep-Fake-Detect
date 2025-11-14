@@ -25,10 +25,37 @@ python dfd.py <file>
 
 ## Output
 
-TBA
+**The tool shows:**
+
+File name
+Analysis status
+Score (0.0 to 1.0)
+Result interpretation
+
+**Score Guide:**
+
+Below 0.3 = Likely authentic
+0.3 to 0.7 = Uncertain
+Above 0.7 = Likely deepfake
+
+**example output**
+
+```bash
+==================================================
+File: test.jpg
+Status: completed
+Score: 0.85
+ID: abc123...
+
+Model Results:
+  model_v1: 0.82 (synthetic)
+  model_v2: 0.88 (synthetic)
+==================================================
+Result: LIKELY DEEPFAKE
+```
 
 ## Links
 
 - https://www.realitydefender.com/
 - https://docs.realitydefender.com/introduction
-
+- https://github.com/Reality-Defender/realitydefender-sdk-python 
