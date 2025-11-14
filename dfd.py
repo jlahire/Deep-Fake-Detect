@@ -1,5 +1,12 @@
 # Deep fake detector for free tier reality defender API
 
+import os
+import sys
+import asyncio 
+from realitydefender import RealityDefender
+
+
+
 class DeepfakeDetector:
     
 
@@ -24,7 +31,9 @@ class Applicaiton:
 
     def run():
 
+
 def main():
+
 
 if __name__ == "__main__":
     main()
