@@ -118,7 +118,7 @@ class Application:
         await self.detector.analyze(filePath)
 
 def main():
-    app = Applicaiton()
+    app = Application()
     asyncio.run(app.run())
 
 if __name__ == "__main__":
