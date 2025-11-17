@@ -41,7 +41,7 @@ class DeepfakeDetector:
         self.client = RealityDefender(api_key=self.apiKey)
 
         try:
-            uploadResponse = await self.client.uplaod(file_path=filePath)
+            uploadResponse = await self.client.upload(file_path=filePath)
             requestId = uploadResponse["request_id"]
             result = await self.client.get_result(requestId)
             self.results(result, filePath, requestId)
@@ -63,10 +63,11 @@ class DeepfakeDetector:
         print(f"Request ID: {requestId}")
 
         if 'models' in result:
-            for modelName, modelData in result["models"].items():
-                modelScore = modelData.get("score", "n/a")
-                modelPrediction = modelData.get("prediction", "n/a")
-                print(f"{modelName}: score={modelScore}, prediction={modelPrediction}")
+            for model in result["models"]:
+                modelName = model.get("model_name", "n/a")
+                modelScore = model.get("score", "n/a")
+                modelStatus = model.get("status", "n/a")
+                print(f"{modelName}: score={modelScore}, status={modelStatus}")
         
         print("="*10)
         self.score(score)
@@ -84,7 +85,7 @@ class DeepfakeDetector:
             print("result: LIKELY DEEPFAKE")
 
     
-class Applicaiton:
+class Application:
 
     def __init__(self):
         self.apiKey = None
